@@ -10,10 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.use(
-    cors({
-        origin: ["https://tech-scribe-fe.vercel.app/"],
-        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD", "TRACE", "CONNECT"],
-    })
+    cors()
 )
 
 app.use("/api/v1", rootRouter)
