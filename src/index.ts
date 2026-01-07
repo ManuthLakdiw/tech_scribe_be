@@ -9,9 +9,13 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.use(
-    cors()
-)
+app.use(cors({
+    origin: [
+        "https://tech-scribe-fe.vercel.app", // ඔයාගේ Frontend URL එක (Production)
+        "http://localhost:5173"              // Localhost (Testing සඳහා)
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+}));
 
 
 app.use("/api/v1", rootRouter)
