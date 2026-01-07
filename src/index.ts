@@ -13,6 +13,10 @@ app.use(
     cors()
 )
 
+
+app.use("/api/v1", rootRouter)
+
+
 mongoose
     .connect(process.env.MONGO_URI as string)
     .then(() => {
@@ -26,7 +30,6 @@ app.listen(process.env.PORT, () => {
     console.log("Server is running")
 })
 
-app.use("/api/v1", rootRouter)
 
 
 
