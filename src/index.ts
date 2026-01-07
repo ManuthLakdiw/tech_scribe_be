@@ -46,8 +46,14 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
     try {
         await connectDB();
         next();
-    } catch (error) {
-        res.status(500).json({ message: "Database Connection Failed" });
+    } catch (error: any) {
+        console.error('❌ DB Error:', error); // Server Log එකේ බලන්න
+
+        // 👇 Postman එකට ඇත්ත Error එක යවන්න (Debug කරන්න ලේසියි)
+        res.status(500).json({
+            message: "Database Connection Failed",
+            error: error.message
+        });
     }
 });
 
