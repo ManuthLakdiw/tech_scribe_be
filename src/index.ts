@@ -46,9 +46,14 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
     try {
         await connectDB();
         next();
-    } catch (error) {
-        console.error("Database Error:", error);
-        res.status(500).json({ message: "Database connection failed" });
+    } catch (error: any) {
+        console.error("❌ Database Connection Error:", error); // Console එකෙත් බලන්න
+
+        // 👇 ඇත්ත Error එක Client ට යවන්න (Debug කරන්න ලේසියි)
+        res.status(500).json({
+            message: "Database connection failed",
+            error: error.message // <--- මේක එකතු කරන්න
+        });
     }
 });
 
