@@ -11,14 +11,10 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: ["http://localhost:5173"],
+        origin: ["https://tech-scribe-fe.vercel.app/"],
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD", "TRACE", "CONNECT"],
     })
 )
-
-app.get("/", (req, res) => {
-    res.send("Hello World!")
-})
 
 app.use("/api/v1", rootRouter)
 
